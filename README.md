@@ -1,1 +1,2 @@
-# Learning Backwards: Learning Computer Science Through the Lens of React
+# Learning Backwards
+## Learning Computer Science Through the Lens of React
