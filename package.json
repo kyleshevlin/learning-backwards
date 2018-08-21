@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "mdx-deck ./talk/deck.mdx"
+    "talk": "mdx-deck ./talk/deck.mdx"
   },
   "author": "Kyle Shevlin <kyle.a.shevlin@gmail.com> (http://kyleshevlin.com/)",
   "license": "MIT",
   "devDependencies": {
-    "mdx-deck": "^1.5.15"
+    "mdx-deck": "^1.6.4"
   }
 }

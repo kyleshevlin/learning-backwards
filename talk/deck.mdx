@@ -1,34 +1,261 @@
-export theme from './theme'
+export { default as theme } from './theme'
+import { Head } from 'mdx-deck'
+import { FullScreenCode } from 'mdx-deck/layouts'
+
+<Head>
+  <title>Learning Backwards: Learning Computer Science Through the Lens of React</title>
+</Head>
 
 # Learning Backwards
-## Learning CS Through the Lens of React
+## Learning Computer Science Through the Lens of React
 
 ---
 
 ## About Me
 
-* JavaScript Engineer
+* JavaScript Engineer, currently funemployed
 * Host of [Second Career Devs](https://secondcareerdevs.com) podcast
 * [egghead.io instructor](https://egghead.io/instructors/kyle-shevlin)
 * Occasional [Twitch Streamer](https://www.twitch.tv/kyleshevlin)
 
 ---
 
-# Why You???
-
-That's a good question!
+# Do I Need to Learn Computer Science?
 
 ---
 
-# Big(O) Notation
+import BigCenter from './layouts/bigCenter'
+
+export default BigCenter
+
+`¯\\_(ツ)_/¯`
 
 ---
 
-# Array Manipulation
+# Story Time
+
+Indulge me in a brief anecdote, please.
+
+```notes
+Started interviewing at bigger companies and had a rude awakening. I knew how to put divs on a website, but didn't really have any software engineering knowledge. Didn't have any clue about data structures and algorithms. Realized that learning this was going to be important for my growth and career.
+```
+
+---
+
+## Probably At Some Point
+
+Learning some computer science won't hurt your career. It augments your day-to-day working knowledge.
+
+It also can help you pass technical interviews more often.
+
+---
+
+# Big O Notation
+## How Bad Can My Code Be?
+
+---
+
+## What is Big O Notation?
+
+"Big O Notation" is a standard way of describing the worst-case performance of an algorithm in regards to time and/or space.
+
+---
+
+## Ok... But What's An Algorithm?
+
+Good question!
+
+An algorithm is a procedure for solving a problem. That's it. Nothing scary. It's a step-by-step way of going from start to finish.
+
+---
+
+## O(1)
+
+```javascript
+const foo = () => 'foo'
+
+const first = arr => arr[0]
+
+const prop = (key, obj) => obj[key]
+```
+
+---
+
+## O(N)
+
+```javascript
+const arr = [1, 2, 3, 4, 5]
+
+arr.forEach()
+arr.map()
+arr.find()
+arr.reduce()
+```
+
+---
+
+## O(N^2)
+
+```javascript
+const arr = [1, 2, 3, 4, 5]
+
+const twoDArray = arr.map(n => arr.map(m => m * n))
+console.log(twoDArray)
+// [[1, 2, 3, 4, 5],
+//  [2, 4, 6, 8, 10],
+//  [3, 6, 9, 12, 15],
+//  [4, 8, 12, 16, 20],
+//  [5, 10, 15, 20, 25]]
+```
+
+---
+
+## O(2^N)
+
+```javascript
+const fib = n => {
+  if (n < 2) {
+    return 1
+  }
+
+  return fib(n - 1) + fib(n - 2)
+}
+
+---
+
+## O(log N)
+
+```javascript
+const binarySearch = (value, tree) => {
+  const { left, right, value: rootValue } = tree.root
+
+  return value === rootValue
+    ? root
+    : value < rootValue
+      ? binarySearch(value, left)
+      : binarySearch(value, right)
+}
+```
+
+---
+
+## Tips to Remember
+
+* Drop Coefficients
+* Look for the Loops
+* Divide and Conquer When Possible
+
+---
+
+## How Does This Impact React Apps
+
+* Don't worry about needing to map/filter/reduce a few times (unless N is _very_ big)
+* Don't block the thread with big calculations, handle asynchronously
+* Use the right data structure for the job
 
 ---
 
 # Data Normalization
+## Or the Art of Making Tradeoffs
+
+---
+
+## Knowing What We Know...
+
+We now recognize that certain data structures might be better suited for a task than others. One typical problem are `find`s on lists. How can we overcome this?
+
+---
+
+## By Turning Our Arrays Into Objects!!!
+
+```javascript
+// Create a normalizing function for IDs
+
+const normalizeByID = arr => arr.reduce((acc, cur) => {
+  acc[cur.id] = cur
+  return acc
+}, {})
+```
+
+---
+export default FullScreenCode
+
+```javascript
+const list = [
+  { id: 1, name: 'Kyle' },
+  { id: 2, name: 'Anna' },
+  { id: 3, name: 'Krios' },
+  { id: 4, name: 'Tali' }
+]
+
+console.log(normalizeByID(list))
+// {
+//   '1': { id: 1, name: 'Kyle' },
+//   '2': { id: 2, name: 'Anna' },
+//   '3': { id: 3, name: 'Krios' },
+//   '4': { id: 4, name: 'Tali' }
+// }
+```
+
+---
+
+## What Did We Do?
+
+We traded space for time.
+
+We changed finding an item by ID from of O(n) to O(1).
+
+[How I Stumbled Upon Normalizing Redux State](https://kyleshevlin.com/how-i-stumbled-upon-normalizing-redux-state/)
+
+---
+
+# Memoization
+## No, That's Not a Typo
+
+---
+
+## What is memoization?
+
+Memoization is the use of a cache within a function to store previously calculated results for retrieval. We trade space for the time cost of recalculating the result again.
+
+---
+export default FullScreenCode
+
+```javascript
+const memo = fn => {
+  const cache = {}
+
+  return (...args) => {
+    const stringifiedArgs = args.join('')
+
+    if (cache[stringifiedArgs]) {
+      return cache[stringifiedArgs]
+    }
+
+    const result = fn(...args)
+    cache[stringifiedArgs] = result
+    return result
+  }
+}
+```
+
+---
+
+## How does this work?
+
+* `memo` accepts a function as an argument
+* Returns a new function accepting any number of arguments
+* Stringifies those arguments to use as a key for the cache
+* If the result is in the cache, return it, otherwise calculate it
+* Cache the result and return it
+
+---
+
+## How Might We Use This In React?
+
+* `Reselect` uses memoization for faster state updates
+* Any pure function can be memoized, including SFCs
+* Complex states can be extracted from components and put into memoized reducers
 
 ---
 
@@ -36,8 +263,9 @@ That's a good question!
 
 ---
 
-# Recursion
+## Resources
 
----
-
-# Windowing
+* [Big O Cheat Sheet](http://bigocheatsheet.com/)
+* [Four Semesters of CS in Six Hours](https://btholt.github.io/four-semesters-of-cs/)
+* [Four Semesters of CS in Six Hours - Part 2](https://btholt.github.io/four-semesters-of-cs-part-two/)
+* [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850)

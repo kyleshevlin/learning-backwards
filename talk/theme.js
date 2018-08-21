@@ -1,17 +1,17 @@
+import React from 'react'
 import { swiss as theme } from 'mdx-deck/themes'
+import { COLORS } from './constants'
+import Provider from './Provider'
+import tomorrow from 'react-syntax-highlighter/styles/prism/tomorrow'
 
-const COLORS = {
-  purple: '#563263',
-  pink: '#EF435D',
-  yellow: '#FCBF32',
-  white: '#F3FCF0',
-  black: '#1F271B'
-}
-
-const h1ShadowDistance = 3
+const h1ShadowDistance = 5
+const h2ShadowDistance = 2
 
 export default {
   ...theme,
+  prism: {
+    style: tomorrow
+  },
   colors: {
     background: COLORS.purple,
     link: COLORS.yellow,
@@ -28,5 +28,15 @@ export default {
       ${h1ShadowDistance}px ${h1ShadowDistance}px ${COLORS.yellow},
       ${h1ShadowDistance * 2}px ${h1ShadowDistance * 2}px ${COLORS.black}
     `
-  }
+  },
+  h2: {
+    fontFamily: 'Bungee Inline',
+    fontSize: '2.35em',
+    lineHeight: 1,
+    textShadow: `
+      ${h2ShadowDistance}px ${h2ShadowDistance}px ${COLORS.black},
+      ${h2ShadowDistance * 2}px ${h2ShadowDistance * 2}px ${COLORS.pink}
+    `
+  },
+  Provider
 }
