@@ -1,6 +1,7 @@
 export { default as theme } from './theme'
-import { Head } from 'mdx-deck'
+import { Head, Image } from 'mdx-deck'
 import { FullScreenCode } from 'mdx-deck/layouts'
+import BigCenter from './layouts/bigCenter'
 
 <Head>
   <title>Learning Backwards: Learning Computer Science Through the Lens of React</title>
@@ -23,9 +24,6 @@ import { FullScreenCode } from 'mdx-deck/layouts'
 # Do I Need to Learn Computer Science?
 
 ---
-
-import BigCenter from './layouts/bigCenter'
-
 export default BigCenter
 
 `¯\\_(ツ)_/¯`
@@ -47,6 +45,8 @@ Started interviewing at bigger companies and had a rude awakening. I knew how to
 Learning some computer science won't hurt your career. It augments your day-to-day working knowledge.
 
 It also can help you pass technical interviews more often.
+
+Hopefully, better jobs => better life.
 
 ---
 
@@ -260,6 +260,110 @@ const memo = fn => {
 ---
 
 # Trees
+## The bane of JS interviews and why React works so damn well
+
+---
+
+## What is a tree?
+
+A tree is a graph data structure comprised of nodes with any number of children and no cycles.
+
+---
+
+## Umm... what's a graph? And what's a cycle?
+
+A graph is a data structure made up of nodes with "edges" between them. A cycle is when several nodes all point to one another.
+
+A tree only has parent and child nodes, with no child nodes pointing to other child nodes.
+
+---
+
+export default BigCenter
+
+![](assets/graph-1.jpg)
+
+---
+
+export default BigCenter
+
+![](assets/tree-1.jpg)
+
+---
+
+<Image size="contain" src="assets/what-if-i-told-you.jpg" />
+
+---
+
+## The DOM and VDOM are Trees!!!
+
+Every website* in the world is a tree data structure
+
+<sub>*I haven't visited them all, so don't quote me on this 😝</sub>
+
+---
+
+export default FullScreenCode
+
+```html
+<html>
+  <head>
+    <title>Learning Backwards</title>
+  </head>
+  <body>
+    <p>Ain't it <strong>awesome</strong> learning backwards!</p>
+  </body>
+</html>
+```
+
+---
+
+export default FullScreenCode
+
+```javascript
+{
+  value: html,
+  children: [
+    { value: head, children: [
+      { value: title, children: ['Learning Backwards'] }
+    ]},
+    { value: body, children: [
+      { value: p, children: [
+        "Ain't it ",
+        { value: strong, children: ['awesome'] },
+        ' learning backwards!'
+      ]}
+    ]}
+  ]
+}
+```
+
+---
+
+export default FullScreenCode
+
+```javascript
+React.createElement('html', {}, [
+  React.createElement('head', {}, [
+    React.createElement('title', {}, [
+      'Learning Backwards'
+    ])
+  ]),
+  React.createElement('body', {}, [
+    React.creactElement('p', {}, [
+      "Ain't it ",
+      React.createElement('strong', {}, [
+        'awesome'
+      ]),
+      ' learning backwards!'
+    ])
+  ])
+])
+```
+
+---
+
+# Live Coding Time!!!
+## Kinda. Live for me. Taped for you.
 
 ---
 

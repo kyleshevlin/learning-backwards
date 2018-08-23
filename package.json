@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "talk": "mdx-deck ./talk/deck.mdx"
+    "talk": "mdx-deck ./talk/deck.mdx",
+    "test": "jest"
   },
   "author": "Kyle Shevlin <kyle.a.shevlin@gmail.com> (http://kyleshevlin.com/)",
   "license": "MIT",
   "devDependencies": {
+    "jest": "^23.5.0",
     "mdx-deck": "^1.6.4"
   }
 }
