@@ -4,7 +4,7 @@ import { COLORS } from './constants'
 import Provider from './Provider'
 import tomorrow from 'react-syntax-highlighter/styles/prism/tomorrow'
 
-const h1ShadowDistance = 5
+const h1ShadowDistance = 4
 const h2ShadowDistance = 2
 
 export default {
@@ -25,8 +25,8 @@ export default {
     lineHeight: 1,
     color: COLORS.pink,
     textShadow: `
-      ${h1ShadowDistance}px ${h1ShadowDistance}px ${COLORS.yellow},
-      ${h1ShadowDistance * 2}px ${h1ShadowDistance * 2}px ${COLORS.black}
+      ${h1ShadowDistance}px ${h1ShadowDistance}px ${COLORS.purple},
+      ${h1ShadowDistance * 2}px ${h1ShadowDistance * 2}px ${COLORS.yellow}
     `
   },
   h2: {
@@ -34,7 +34,7 @@ export default {
     fontSize: '2.35em',
     lineHeight: 1,
     textShadow: `
-      ${h2ShadowDistance}px ${h2ShadowDistance}px ${COLORS.black},
+      ${h2ShadowDistance}px ${h2ShadowDistance}px ${COLORS.purple},
       ${h2ShadowDistance * 2}px ${h2ShadowDistance * 2}px ${COLORS.pink}
     `
   },
