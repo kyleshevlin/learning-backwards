@@ -178,6 +178,12 @@ const normalizeByID = arr => arr.reduce((acc, cur) => {
 ```
 
 ---
+
+# Live Coding Time!!!
+## Kinda. Live for me. Taped for you.
+
+---
+
 export default FullScreenCode
 
 ```javascript
@@ -248,6 +254,11 @@ const memo = fn => {
 * Stringifies those arguments to use as a key for the cache
 * If the result is in the cache, return it, otherwise calculate it
 * Cache the result and return it
+
+---
+
+# Live Coding Time!!!
+## Kinda. Live for me. Taped for you.
 
 ---
 
@@ -367,9 +378,74 @@ React.createElement('html', {}, [
 
 ---
 
+## Binary Tree Traversal - In Order
+
+```javascript
+const inOrderTraversal = visit => treeRoot => {
+  inOrderTraversal(visit)(treeRoot.left)
+  visit(treeRoot)
+  inOrderTraversal(visit)(treeRoot.right)
+}
+```
+
+---
+
+## Binary Tree Traversal - Pre Order
+
+```javascript
+const inOrderTraversal = visit => treeRoot => {
+  visit(treeRoot)
+  inOrderTraversal(visit)(treeRoot.left)
+  inOrderTraversal(visit)(treeRoot.right)
+}
+```
+
+---
+
+## Binary Tree Traversal - Post Order
+
+```javascript
+const inOrderTraversal = visit => treeRoot => {
+  inOrderTraversal(visit)(treeRoot.left)
+  inOrderTraversal(visit)(treeRoot.right)
+  visit(treeRoot)
+}
+```
+
+---
+
+## How might this help us in React?
+
+- Debugging
+- Optimizing Renders
+- Recursive functions for React elements
+- Compound Components
+
+---
+
+# Takeaways!
+## aka Kyle's pre-conclusion ramblings 😝
+
+---
+
 ## Resources
 
 * [Big O Cheat Sheet](http://bigocheatsheet.com/)
 * [Four Semesters of CS in Six Hours](https://btholt.github.io/four-semesters-of-cs/)
 * [Four Semesters of CS in Six Hours - Part 2](https://btholt.github.io/four-semesters-of-cs-part-two/)
 * [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850)
+
+---
+
+# Thank You!!!
+## Byteconf for hosting and you for listening!
+
+---
+
+# Find me on...
+
+- [Twitter](https://twitter.com/kyleshevlin)
+- [egghead](https://egghead.io/instructors/kyle-shevlin)
+- [Twitch](https://www.twitch.tv/kyleshevlin)
+- [My Newsletter](https://buttondown.email/kyleshevlin)
+- [Github](https://github.com/kyleshevlin)

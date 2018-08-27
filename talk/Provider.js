@@ -34,7 +34,7 @@ const Provider = ({ children, index, length }) => (
         fontSize: '1.5em',
         position: 'absolute',
         bottom: 10,
-        right: 10
+        left: 10
       }}
     >
       <a
