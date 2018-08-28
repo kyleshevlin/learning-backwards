@@ -29,9 +29,9 @@ const areIdenticalNodes = (node1, node2) => {
     return false
   }
 
-  return node1.children.every((child, index) => {
-    return areIdenticalNodes(child, node2.children[index])
-  })
+  return node1.children.every((child, index) =>
+    areIdenticalNodes(child, node2.children[index])
+  )
 }
 
 module.exports = {
