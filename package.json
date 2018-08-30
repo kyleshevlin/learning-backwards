@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:talk": "mdx-deck build ./talk/deck.mdx",
     "talk": "mdx-deck ./talk/deck.mdx",
     "test": "jest"
   },
