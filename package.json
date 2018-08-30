@@ -12,6 +12,6 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^23.5.0",
-    "mdx-deck": "^1.6.4"
+    "mdx-deck": "^1.7.0"
   }
 }
