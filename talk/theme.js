@@ -20,7 +20,7 @@ export default {
   font: 'Open Sans, sans-serif',
   weights: [300],
   h1: {
-    fontFamily: 'Bungee Inline',
+    fontFamily: 'Bungee, Bungee Inline',
     fontSize: '4.5em',
     lineHeight: 1,
     color: COLORS.pink,
@@ -30,7 +30,7 @@ export default {
     `
   },
   h2: {
-    fontFamily: 'Bungee Inline',
+    fontFamily: 'Bungee, Bungee Inline',
     fontSize: '2.35em',
     lineHeight: 1,
     textShadow: `
