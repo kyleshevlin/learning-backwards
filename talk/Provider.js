@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { COLORS } from './constants'
+import Edges from 'react-edges'
 
 class Provider extends Component {
   handleHashChange = index => {
@@ -7,48 +8,34 @@ class Provider extends Component {
   }
 
   render() {
-    const { children, index, length } = this.props
-
     return (
-      <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
-        <div>{children}</div>
-        <div
-          style={{
-            position: 'fixed',
-            bottom: 10,
-            left: '50%',
-            transform: 'translate(-50%, 0)'
-          }}
-        >
-          {Array(length)
-            .fill()
-            .map((_, i) => (
-              <span
-                key={i}
-                onClick={() => {
-                  this.handleHashChange(i)
-                }}
-                style={{
-                  borderRadius: '50%',
-                  backgroundColor: COLORS.white,
-                  cursor: 'pointer',
-                  display: 'inline-block',
-                  width: 10,
-                  height: 10,
-                  margin: 3,
-                  opacity: i <= index ? 0.75 : 0.25
-                }}
-              />
-            ))}
-        </div>
-        <div
-          style={{
-            fontSize: '1.5em',
-            position: 'absolute',
-            bottom: 10,
-            left: 10
-          }}
-        >
+      <Edges
+        {...this.props}
+        bottom={({ index, length }) => (
+          <Fragment>
+            {Array(length)
+              .fill()
+              .map((_, i) => (
+                <span
+                  key={i}
+                  onClick={() => {
+                    this.handleHashChange(i)
+                  }}
+                  style={{
+                    borderRadius: '50%',
+                    backgroundColor: COLORS.white,
+                    cursor: 'pointer',
+                    display: 'inline-block',
+                    width: 10,
+                    height: 10,
+                    margin: 3,
+                    opacity: i <= index ? 0.75 : 0.25
+                  }}
+                />
+              ))}
+          </Fragment>
+        )}
+        bottomRight={() => (
           <a
             href="https://twitter.com/kyleshevlin"
             style={{ color: COLORS.white, textDecoration: 'none' }}
@@ -63,8 +50,8 @@ class Provider extends Component {
             </svg>{' '}
             @kyleshevlin
           </a>
-        </div>
-      </div>
+        )}
+      />
     )
   }
 }
